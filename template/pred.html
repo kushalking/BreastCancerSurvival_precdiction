@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang ="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Breast Cancer Survival Prediction</title>
+</head>
+
+<style>
+    
+    input[type=text], select {
+        width:80%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        box-sizing: border-box;
+        font-weight:bolder;
+    }
+
+    input[type=submit] {
+        width: 80%;
+        background-color: goldenrod;
+        color:black;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size:100;
+        font-weight: bolder;
+    }
+
+    form{
+        text-align: center;
+        border-radius: 10px;
+        padding-top: 5%;
+        font-weight: bolder;
+    }
+
+    div {
+ 
+        border-radius: 5px;
+        margin-left: 35%;
+         width: 30%;
+  
+    }
+
+    h1{
+        color: goldenrod;
+        font-size: 40px;
+        font-weight: bolder;
+    }
+
+    h3{
+        color: white;
+    }
+
+    body {
+            
+            background-image: url("../static/bg1.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%x;
+            text-align: center;
+            padding: 0px;
+            background-attachment: fixed;;
+            margin-bottom: 200%;
+            overflow-x: hidden;
+        }
+        div {
+            margin: auto; auto;
+            }
+            .scroll {
+        border: none;
+        padding: 100px;
+        font: 24px/36px sans-serif;
+        width: 350px;
+        height: 500px;
+        overflow-x: hidden;
+        text-align: center;
+        align-self: center;
+        }
+        ::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+        }
+        ::-webkit-scrollbar-track {
+        border: 1px solid yellowgreen;
+        border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+        background: yellowgreen;
+        border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+        background: #88ba1c;
+        }
+    
+       
+
+</style>
+
+
+
+<body>
+    <div class = "pred">
+        <h1> Breast Cancer Survival Prediction</h1>
+        <div class="scroll">
+
+        <form action ="{{url_for('predict')}}"method="post" style = "background-color:#E6E6FA">
+            <label for = "Age">Age</label><br>
+            <input type= "text" name= "Age" placeholder="eg: 64" required = "required" /> <br>
+            <label for = "sex">Gender</label><br>
+            <select id ="sex" name="Gender">
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+            </select><br>
+            <label for = "pr1">Protein 1</label><br>
+            <input type= "text" name= "Protein1" placeholder="eg: 0.080353" required = "required" /> <br>
+            <label for = "pr2">Protein 2</label><br>
+            <input type= "text" name= "Protein2" placeholder="eg: 0.42638" required = "required" /> <br>
+            <label for = "pr3">Protein 3</label><br>
+            <input type= "text" name= "Protein3" placeholder="eg: 0.54715" required = "required" /> <br>
+            <label for = "pr4">Protein 4</label><br>
+            <input type= "text" name= "Protein4" placeholder="eg: 0.273680" required = "required" /> <br>
+            <label for = "Tumour_Stage">Tumour Stage</label><br>
+            <select id = "TS" name ="Tumour_Stage">
+                <option style="display:none">
+                <option value="1">I</option>
+                <option value="2">II</option>
+                <option value="3">III</option>
+            </select><br>
+            </select><br>
+                
+            <label for = "Histology">Histology Result</label><br>
+            <select id="histology" name = "Histology">
+                <option style="display:none">
+                <option value="1"> Infiltrating Ductal Carcinoma</option>
+                <option value="2"> Infiltrating Lobular Carcinoma</option>
+                <option value="3"> Mucinous Carcinoma</option>
+                </select><br>
+                </select><br>
+                
+            <label for = "ER_status">Estrogen receptor Status</label><br>
+            <select id="ER_status" name = "ER status">
+                <option style="display:none">
+                <option value="1">Positive</option>
+                <option value="0">Negative</option>
+                </select><br>
+                 </select><br>
+                
+            <label for = "PR_status">Progesterone receptors Status</label><br>
+            <select id="PR_status" name = "PR_status">
+                <option style="display:none">
+                <option value="1">Positive</option>
+                <option value="0">Negative</option>
+                </select><br>
+                </select><br>
+                
+            <label for = "HER2_status">Human epidermal growth factor Status</label><br>
+            <select id="HER2_status" name = "HER2_status">
+                <option style="display:none">
+                <option value="1">Positive</option>
+                <option value="2">Negative</option>
+                </select><br>
+            
+            </select><br>
+            <label for = "St">Surgery Type</label><br>
+            <select id="St" name="Surgery_type">
+                <option style="display:none">
+                <option value="4">Simple Mastectomy</option>
+                <option value="2">Modified Radical Mastectomy</option>
+                <option value="3">Lumpectomy</option>
+                <option value="1">Other</option>
+            </select><br>
+            <input type="submit" value="Predict Survival">
+
+        </form> 
+        <br>
+        <br>
+        <h3>{{prediction_text}}<h3>
+    </div>
+    </div>
+
+
+</body>
+</html>
