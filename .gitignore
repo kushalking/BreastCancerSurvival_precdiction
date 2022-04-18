@@ -1,0 +1,10 @@
+.git/
+static/
+template/
+app.py/
+BRCA.csv/
+favicon.ico/
+first.py/
+model.pkl/
+project.py/
+requirements.txt/
